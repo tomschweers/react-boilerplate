@@ -1,15 +1,14 @@
-import React from 'react'
-//import { Link } from 'react-router-dom'
+import React, {Component} from 'react'
 import Sidebar from 'react-sidebar'
 import SideBarContent from './SideBarContent'
 import MainRouter from './MainRouter'
 import SideBarPanel from './SideBarPanel'
 
-//import { library } from '@fortawesome/fontawesome-svg-core'
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faBars, faHome } from '@fortawesome/free-solid-svg-icons'
-
-//library.add(faBars, faHome)
+// Font Awesome icons
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faBars, faHome } from '@fortawesome/free-solid-svg-icons'
+// library.add(faBars, faHome)
 
 const styles = {
   contentHeaderMenuLink: {
@@ -22,7 +21,7 @@ const styles = {
   }
 }
 
-class App extends React.Component {
+class App extends Component {
   constructor (props) {
     super(props)
 

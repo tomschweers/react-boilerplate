@@ -26,7 +26,7 @@ const styles = {
   }
 }
 
-// Links for the sidebar, routing is in Router.js
+// Links to pages in the sidebar
 const SideBarContent = props => {
   const style = props.style
     ? { ...styles.sidebar, ...props.style }
