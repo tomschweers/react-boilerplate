@@ -4,15 +4,14 @@ import PropTypes from 'prop-types'
 const styles = {
   root: {
     fontFamily:
-      '"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
+      '"HelveticaNeue-Light", Helvetica, Arial, sans-serif',
     fontWeight: 300
   },
   header: {
-    backgroundColor: '#20232a',
+    backgroundColor: '#ff6600',
     color: 'white',
-    padding: '16px',
-    fontSize: '1.5em',
-    height: '25px'
+    padding: '30px',
+    fontSize: '1.5em'
   }
 }
 

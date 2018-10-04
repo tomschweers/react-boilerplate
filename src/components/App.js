@@ -21,24 +21,38 @@ const styles = {
   }
 }
 
+const mql = window.matchMedia(`(min-width: 800px)`)
+
 class App extends Component {
   constructor (props) {
     super(props)
-
     this.state = {
-      docked: true,
-      open: true
+      sidebarDocked: mql.matches,
+      sidebarOpen: false
     }
 
-    this.onSetOpen = this.onSetOpen.bind(this)
+    this.mediaQueryChanged = this.mediaQueryChanged.bind(this)
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this)
   }
 
-  onSetOpen (open) {
-    this.setState({ open })
+  componentWillMount () {
+    mql.addListener(this.mediaQueryChanged)
+  }
+
+  componentWillUnmount () {
+    mql.removeListener(this.mediaQueryChanged)
+  }
+
+  onSetSidebarOpen (open) {
+    this.setState({ sidebarOpen: open })
+  }
+
+  mediaQueryChanged () {
+    this.setState({ sidebarDocked: mql.matches, sidebarOpen: false })
   }
 
   render () {
-    const sidebar = <SideBarContent />
+    const sidebarContent = <SideBarContent />
 
     const contentHeader = (
       <span>
@@ -46,15 +60,13 @@ class App extends Component {
       </span>
     )
 
-    const sidebarProps = {
-      sidebar,
-      docked: this.state.docked,
-      open: this.state.open,
-      onSetOpen: this.onSetOpen
-    }
-
     return (
-      <Sidebar {...sidebarProps}>
+      <Sidebar
+        sidebar={sidebarContent}
+        open={this.state.sidebarOpen}
+        docked={this.state.sidebarDocked}
+        onSetOpen={this.onSetSidebarOpen}
+      >
         <SideBarPanel title={contentHeader}>
           <div style={styles.content}>
             <MainRouter />
