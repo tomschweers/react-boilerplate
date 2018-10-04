@@ -82,7 +82,7 @@ const SidebarContent = props => {
     : styles.sidebar
 
   return (
-    <SideBarPanel style={style}>
+    <SideBarPanel title={'My Application'} style={style}>
       <div style={styles.content}>
         <Link to='/'style={styles.sidebarLink}>Home</Link>
         <div style={styles.divider} />
@@ -92,7 +92,7 @@ const SidebarContent = props => {
       </div>
     </SideBarPanel>
   )
-};
+}
 
 SidebarContent.propTypes = {
   style: PropTypes.object

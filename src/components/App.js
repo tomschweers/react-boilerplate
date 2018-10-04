@@ -21,52 +21,108 @@ const styles = {
   }
 }
 
-const mql = window.matchMedia(`(min-width: 800px)`)
-
-class App extends Component {
+class App extends React.Component {
   constructor (props) {
     super(props)
+
     this.state = {
-      sidebarDocked: mql.matches,
-      sidebarOpen: false
+      docked: false,
+      open: false,
+      transitions: true,
+      touch: true,
+      shadow: true,
+      pullRight: false,
+      touchHandleWidth: 20,
+      dragToggleDistance: 30
     }
 
-    this.mediaQueryChanged = this.mediaQueryChanged.bind(this)
-    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this)
+    this.renderPropCheckbox = this.renderPropCheckbox.bind(this)
+    this.renderPropNumber = this.renderPropNumber.bind(this)
+    this.onSetOpen = this.onSetOpen.bind(this)
+    this.menuButtonClick = this.menuButtonClick.bind(this)
   }
 
-  componentWillMount () {
-    mql.addListener(this.mediaQueryChanged)
+  onSetOpen (open) {
+    this.setState({ open })
   }
 
-  componentWillUnmount () {
-    mql.removeListener(this.mediaQueryChanged)
+  menuButtonClick (ev) {
+    ev.preventDefault()
+    this.onSetOpen(!this.state.open)
   }
 
-  onSetSidebarOpen (open) {
-    this.setState({ sidebarOpen: open })
+  renderPropCheckbox (prop) {
+    const toggleMethod = ev => {
+      const newState = {}
+      newState[prop] = ev.target.checked
+      this.setState(newState)
+    };
+
+    return (
+      <p key={prop}>
+        <label htmlFor={prop}>
+          <input
+            type="checkbox"
+            onChange={toggleMethod}
+            checked={this.state[prop]}
+            id={prop}
+          />
+          {prop}
+        </label>
+      </p>
+    )
   }
 
-  mediaQueryChanged () {
-    this.setState({ sidebarDocked: mql.matches, sidebarOpen: false })
+  renderPropNumber (prop) {
+    const setMethod = ev => {
+      const newState = {}
+      newState[prop] = parseInt(ev.target.value, 10)
+      this.setState(newState)
+    };
+
+    return (
+      <p key={prop}>
+        {prop}{' '}
+        <input type="number" onChange={setMethod} value={this.state[prop]} />
+      </p>
+    )
   }
 
   render () {
-    const sidebarContent = <SideBarContent />
+    const sidebar = <SideBarContent />
 
     const contentHeader = (
       <span>
-        <span class="Header"></span>
+        {!this.state.docked && (
+          <a
+            onClick={this.menuButtonClick}
+            href="#"
+            style={styles.contentHeaderMenuLink}
+          >
+            =
+          </a>
+        )}
+        <span> My Application</span>
       </span>
     )
 
+    const sidebarProps = {
+      sidebar,
+      docked: this.state.docked,
+      sidebarClassName: 'custom-sidebar-class',
+      contentId: 'custom-sidebar-content-id',
+      open: this.state.open,
+      touch: this.state.touch,
+      shadow: this.state.shadow,
+      pullRight: this.state.pullRight,
+      touchHandleWidth: this.state.touchHandleWidth,
+      dragToggleDistance: this.state.dragToggleDistance,
+      transitions: this.state.transitions,
+      onSetOpen: this.onSetOpen
+    }
+
     return (
-      <Sidebar
-        sidebar={sidebarContent}
-        open={this.state.sidebarOpen}
-        docked={this.state.sidebarDocked}
-        onSetOpen={this.onSetSidebarOpen}
-      >
+      <Sidebar {...sidebarProps}>
         <SideBarPanel title={contentHeader}>
           <div style={styles.content}>
             <MainRouter />
