@@ -17,7 +17,7 @@ Then for unused dependencies run:
 $ yarn remove [package]
 ```
 
-The sidebar comes from https://www.npmjs.com/package/react-sidebar. This is the best sidebar nav for React that I was able to find. You can configure it in many cool ways and adapts well to mobile. 
+The sidebar comes from https://www.npmjs.com/package/react-sidebar. This is the best sidebar nav for React that I was able to find. You can configure it in many cool ways and adapts well to mobile. Take note that I am running an older version of react-sidebar (v2) because the newest version does not support the sliding functionality on mobile to close the menu.
 
 Font Awesome is included as well, because well, it's awesome. No icons are actually used in the boilerplate but it's all set up and ready to go; all you have to do is uncomment the code in App.js and import your icon of choice to your component.
 
