@@ -56,7 +56,7 @@ class App extends React.Component {
       const newState = {}
       newState[prop] = ev.target.checked
       this.setState(newState)
-    };
+    }
 
     return (
       <p key={prop}>
@@ -78,7 +78,7 @@ class App extends React.Component {
       const newState = {}
       newState[prop] = parseInt(ev.target.value, 10)
       this.setState(newState)
-    };
+    }
 
     return (
       <p key={prop}>

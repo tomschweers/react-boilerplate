@@ -2,7 +2,7 @@
 
 Originally cloned from https://github.com/facebook/create-react-app
 
-This is the starting point for my own website. I wanted to keep it as simple as possible for future uses. Feel free to clone/download and star if you find it useful! This is also great for sandboxing components.
+This is the starting point for my own website. I wanted to keep it as simple as possible for future uses. Feel free to clone/download and star if you find it useful. This is also great for sandboxing components.
 
 ## Dependencies
 I have installed https://www.npmjs.com/package/depcheck. It is very useful when sandboxing because I often will install a bunch of packages to play around with and then end up forgetting to remove them. Just run:
