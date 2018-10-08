@@ -1,6 +1,6 @@
 {
     "name": "React Boilerplate",
     "repository": "https://github.com/tomschweers/react-boilerplate",
-    "logo": "https://react-boilerplate-sidenav.herokuapp.com//orange_react.png",
+    "logo": "https://react-boilerplate-sidenav.herokuapp.com/orange_react.png",
     "generator": "https://www.expeditedssl.com/heroku-button-maker"
 }
